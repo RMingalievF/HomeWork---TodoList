@@ -17,10 +17,10 @@ final class TodoListTableViewController: UITableViewController {
 		taskManager = TaskManager()
 		let tasks = [
 			ImportantTask(title: "Do homework", taskPriority: .high),
-			RegularTask(title: "Do homework", completed: true),
+			RegularTask(title: "Clean class", completed: true),
 			ImportantTask(title: "Write new tasks", taskPriority: .low),
-			ImportantTask(title: "Do homework", taskPriority: .high),
-			ImportantTask(title: "Do homework", taskPriority: .high),
+			ImportantTask(title: "Send message", taskPriority: .medium),
+			ImportantTask(title: "Check balanse", taskPriority: .high),
 			ImportantTask(title: "Go home", taskPriority: .low),
 			RegularTask(title: "Go Sleep", completed: false)
 		]
@@ -29,7 +29,7 @@ final class TodoListTableViewController: UITableViewController {
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 	}
 
-	private func getTaskForIndex(_ indexPath: IndexPath) -> Task {
+	private func getTaskForIndex(_ indexPath: IndexPath) -> Tasks {
 		taskManager.getAllTasks()[indexPath.row]
 	}
 
@@ -45,7 +45,7 @@ final class TodoListTableViewController: UITableViewController {
 		var contentConfiguration = cell.defaultContentConfiguration()
 
 		if let task = task as? ImportantTask {
-			contentConfiguration.secondaryText = "Deadline: \(task.deadLine.formatted())"
+			contentConfiguration.secondaryText = "Deadline: \(task.deadLine!.formatted())" 
 		}
 
 		contentConfiguration.text = task.title

@@ -26,9 +26,17 @@ class ImportantTask: Tasks {
 		case medium
 		case low
 	}
-	
 	let taskPriority: TaskPriority
-	let deadLine = Date()
+	var deadLine: Date? {
+		switch taskPriority {
+		case .high:
+			return Calendar.current.date(byAdding: .day, value: 1, to: Date())
+		case .medium:
+			return Calendar.current.date(byAdding: .day, value: 2, to: Date())
+		case .low:
+			return Calendar.current.date(byAdding: .day, value: 3, to: Date())
+		}
+	}
 	init(title: String, taskPriority: TaskPriority) {
 		self.taskPriority = taskPriority
 		super.init(title: title, completed: false)

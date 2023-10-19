@@ -7,13 +7,20 @@
 
 import Foundation
 
-class TaskManager {
-	
-	func addTasks() {}
-	func deleteTasks() {}
-	func getAllTasks() {}
-	func getCompletedTasks() {}
-	func getNotCompletedTasks() {}
-	
-	
+class TaskManager: ITaskManager {
+	private var overolTasks: [Tasks] = []
+	func addTasks(tasks: [Tasks]) {
+		for tasksAll in 0..<tasks.count {
+			overolTasks.append(tasks[tasksAll])
+		}
+	}
+	func getAllTasks() -> [Tasks] {
+		return overolTasks
+	}
+	func completeTask() -> [Tasks] {
+		overolTasks.filter({ $0.completed != false })
+	}
+	func notCompleteTask() -> [Tasks] {
+		overolTasks.filter({ $0.completed != true })
+	}
 }
