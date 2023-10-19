@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+class TaskManager {
+	
+	func addTasks() {}
+	func deleteTasks() {}
+	func getAllTasks() {}
+	func getCompletedTasks() {}
+	func getNotCompletedTasks() {}
+	
+	
+}
