@@ -16,6 +16,13 @@ final class TodoListTableViewController: UITableViewController {
 	private func setup() {
 		taskManager = TaskManager()
 		let tasks = [
+			ImportantTask(title: "Do homework", taskPriority: .high),
+			RegularTask(title: "Do homework", completed: true),
+			ImportantTask(title: "Write new tasks", taskPriority: .low),
+			ImportantTask(title: "Do homework", taskPriority: .high),
+			ImportantTask(title: "Do homework", taskPriority: .high),
+			ImportantTask(title: "Go home", taskPriority: .low),
+			RegularTask(title: "Go Sleep", completed: false)
 		]
 		taskManager.addTasks(tasks: tasks)
 
@@ -23,13 +30,13 @@ final class TodoListTableViewController: UITableViewController {
 	}
 
 	private func getTaskForIndex(_ indexPath: IndexPath) -> Task {
-		taskManager.allTasks()[indexPath.row]
+		taskManager.getAllTasks()[indexPath.row]
 	}
 
 	// MARK: - Table view data source
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		taskManager.allTasks().count
+		taskManager.getAllTasks().count
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
