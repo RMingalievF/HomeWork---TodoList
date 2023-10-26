@@ -8,11 +8,16 @@
 import Foundation
 
 class TaskManagerSorting: TaskManagerDecorator {
-	//private var allTasks: [Tasks] = []
-	required init(decorator: TaskManagerDecorator) {
-		super.init(decoratorTasks: decorator)
-	}
 	override func getAllTasks() -> [Tasks] {
 		super.getAllTasks().sorted(by: { $0.title > $1.title })
+	}
+	override func completedTask() -> [Tasks] {
+		super.completedTask()
+	}
+	override func notCompletedTask() -> [Tasks] {
+		super.notCompletedTask().sorted(by: { $0.title > $1.title })
+	}
+	override func addTasks(tasks: [Tasks]) {
+		super.addTasks(tasks: tasks)
 	}
 }

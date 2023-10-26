@@ -14,13 +14,13 @@ class TaskManagerDecorator: ITaskManager {
 	init(decoratorTasks: ITaskManager) {
 		self.decoratorTasks = decoratorTasks
 	}
-//	private func sorted(tasks: [Tasks]) -> [Tasks] {
+//	private func sorted(tasks: [Tasks]) {
 //	}
 	func addTasks(tasks: [Tasks]) {
 		decoratorTasks.addTasks(tasks: tasks )
 	}
 	func getAllTasks() -> [Tasks] {
-		decoratorTasks.getAllTasks().sorted(by: { $0.title > $1.title}) // для проверки, временно
+		decoratorTasks.getAllTasks()
 	}
 	func completedTask() -> [Tasks] {
 		decoratorTasks.completedTask()

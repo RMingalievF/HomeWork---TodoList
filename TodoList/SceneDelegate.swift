@@ -29,12 +29,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		return viewController
 	}
 	func buildTaskManager() -> ITaskManager {
-		let taskManager = TaskManagerDecorator()
+		let taskManager2 = TaskManager()
+		let taskManager = TaskManagerSorting(decoratorTasks: taskManager2)
 		let tasks = [
 			ImportantTask(title: "Do homework", date: Date(), taskPriority: .high),
 			RegularTask(title: "Do Workout", completed: true),
-			ImportantTask(title: "Write new tasks", date: Date(), taskPriority: .low),
 			RegularTask(title: "Solve 3 algorithms", completed: false),
+			ImportantTask(title: "Write new tasks", date: Date(), taskPriority: .low),
 			ImportantTask(title: "Go shopping", date: Date(), taskPriority: .medium)
 		]
 		taskManager.addTasks(tasks: tasks)
