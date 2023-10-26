@@ -10,8 +10,8 @@ import Foundation
 class TaskManager: ITaskManager {
 	private var overolTasks: [Tasks] = []
 	func addTasks(tasks: [Tasks]) {
-		for tasksAll in 0..<tasks.count {
-			overolTasks.append(tasks[tasksAll])
+		for task in tasks {
+			overolTasks.append(task)
 		}
 	}
 	func getAllTasks() -> [Tasks] {
