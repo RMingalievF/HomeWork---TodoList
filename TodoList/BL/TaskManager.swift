@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TaskManager: ITaskManager {
+final class TaskManager {
 	private var allTasks: [Tasks] = []
 	func addTasks(tasks: [Tasks]) {
 		for task in tasks {

@@ -28,14 +28,14 @@ final class ImportantTask: Tasks {
 	}
 	let taskPriority: TaskPriority
 	var date: Date
-	var deadLine: Date? {
+	var deadLine: Date {
 		switch taskPriority {
 		case .high:
-			return Calendar.current.date(byAdding: .day, value: 1, to: date)
+			return Calendar.current.date(byAdding: .day, value: 1, to: date)! // swiftlint:disable:this force_unwrapping
 		case .medium:
-			return Calendar.current.date(byAdding: .day, value: 2, to: date)
+			return Calendar.current.date(byAdding: .day, value: 2, to: date)! // swiftlint:disable:this force_unwrapping
 		case .low:
-			return Calendar.current.date(byAdding: .day, value: 3, to: date)
+			return Calendar.current.date(byAdding: .day, value: 3, to: date)! // swiftlint:disable:this force_unwrapping
 		}
 	}
 	init(title: String, date: Date, taskPriority: TaskPriority) {

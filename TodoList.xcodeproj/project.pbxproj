@@ -77,6 +77,7 @@
 		C498DA322997D56700657302 /* BL */ = {
 			isa = PBXGroup;
 			children = (
+				82060EBD2AE12FE5005AD0BF /* ITaskManager.swift */,
 				82060EB92AE11627005AD0BF /* TaskManager.swift */,
 				82060EBB2AE1163D005AD0BF /* Tasks.swift */,
 			);
@@ -87,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				F597BE9C299E8F6F00DC71FA /* MainScreen */,
-				82060EBD2AE12FE5005AD0BF /* ITaskManager.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 				INFOPLIST_FILE = TodoList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -382,7 +382,7 @@
 				INFOPLIST_FILE = TodoList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
