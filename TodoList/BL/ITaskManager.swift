@@ -12,20 +12,4 @@ protocol ITaskManager {
 	func getAllTasks() -> [Tasks]
 	func completedTask() -> [Tasks]
 	func notCompletedTask() -> [Tasks]
-	func removeTask(task: Tasks)
-}
-
-extension TaskManager: ITaskManager { }
-
-extension ImportantTask.TaskPriority: CustomStringConvertible {
-	var description: String {
-		switch self {
-		case .high:
-			return "!!!"
-		case .medium:
-			return "!!"
-		case .low:
-			return "!"
-		}
-	}
 }

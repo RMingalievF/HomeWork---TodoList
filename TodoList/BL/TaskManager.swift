@@ -30,3 +30,4 @@ final class TaskManager {
 		allTasks.removeAll { $0 === task }
 	}
 }
+extension TaskManager: ITaskManager { }
