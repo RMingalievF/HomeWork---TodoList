@@ -10,6 +10,6 @@ import Foundation
 protocol ITaskManager {
 	func addTasks(tasks: [Tasks])
 	func getAllTasks() -> [Tasks]
-	func completeTask() -> [Tasks]
-	func notCompleteTask() -> [Tasks]
+	func completedTask() -> [Tasks]
+	func notCompletedTask() -> [Tasks]
 }
