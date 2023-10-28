@@ -9,23 +9,39 @@
 
 import Foundation
 
-class TaskManagerDecorator: ITaskManager {
-	private let decoratorTasks: ITaskManager
-	init(decoratorTasks: ITaskManager) {
-		self.decoratorTasks = decoratorTasks
+final class TaskManagerDecorator: ITaskManager {
+	let taskManager: ITaskManager
+	init(taskManager: ITaskManager) {
+		self.taskManager = taskManager
 	}
-//	private func sorted(tasks: [Tasks]) {
-//	}
+
 	func addTasks(tasks: [Tasks]) {
-		decoratorTasks.addTasks(tasks: tasks )
+		taskManager.addTasks(tasks: tasks )
 	}
 	func getAllTasks() -> [Tasks] {
-		decoratorTasks.getAllTasks()
+		sorted(tasks: taskManager.getAllTasks())
 	}
 	func completedTask() -> [Tasks] {
-		decoratorTasks.completedTask()
+		sorted(tasks: taskManager.completedTask())
 	}
 	func notCompletedTask() -> [Tasks] {
-		decoratorTasks.notCompletedTask()
+		sorted(tasks: taskManager.notCompletedTask())
+	}
+}
+
+private extension TaskManagerDecorator {
+	func sorted(tasks: [Tasks]) -> [Tasks] {
+		tasks.sorted {
+			if let task0 = $0 as? ImportantTask, let task1 = $1 as? ImportantTask {
+				return task0.taskPriority.rawValue > task1.taskPriority.rawValue
+			}
+			if $0 is ImportantTask, $1 is RegularTask {
+				return true
+			}
+			if $0 is RegularTask, $1 is ImportantTask {
+				return false
+			}
+			return true
+		}
 	}
 }

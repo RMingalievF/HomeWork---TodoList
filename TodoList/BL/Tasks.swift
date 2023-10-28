@@ -21,10 +21,10 @@ final class RegularTask: Tasks {
 }
 
 final class ImportantTask: Tasks {
-	enum TaskPriority {
-		case high
-		case medium
+	enum TaskPriority: Int {
 		case low
+		case medium
+		case high
 	}
 	let taskPriority: TaskPriority
 	var date: Date
@@ -42,17 +42,5 @@ final class ImportantTask: Tasks {
 		self.taskPriority = taskPriority
 		self.date = date
 		super.init(title: title, completed: false)
-	}
-}
-extension ImportantTask.TaskPriority: CustomStringConvertible {
-	var description: String {
-		switch self {
-		case .high:
-			return "!!!"
-		case .medium:
-			return "!!"
-		case .low:
-			return "!"
-		}
 	}
 }

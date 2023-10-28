@@ -21,10 +21,10 @@ final class TaskManager {
 		return allTasks
 	}
 	func completedTask() -> [Tasks] {
-		allTasks.filter({ $0.completed != false })
+		allTasks.filter { $0.completed }
 	}
 	func notCompletedTask() -> [Tasks] {
-		allTasks.filter({ $0.completed != true })
+		allTasks.filter { !$0.completed }
 	}
 	func removeTask(task: Tasks) {
 		allTasks.removeAll { $0 === task }

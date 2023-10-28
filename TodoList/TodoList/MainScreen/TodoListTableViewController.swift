@@ -13,10 +13,10 @@ final class TodoListTableViewController: UITableViewController {
 }
 extension TodoListTableViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		taskManager.notCompletedTask().count
+		taskManager.getAllTasks().count
 	}
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let task = taskManager.notCompletedTask()[indexPath.row]
+		let task = taskManager.getAllTasks()[indexPath.row]
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 		configureCell(cell, with: task)
 		return cell
@@ -28,7 +28,7 @@ private extension TodoListTableViewController {
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 	}
 	func getTaskForIndex(_ indexPath: IndexPath) -> Tasks {
-		taskManager.notCompletedTask()[indexPath.row]
+		taskManager.getAllTasks()[indexPath.row]
 	}
 	func configureCell(_ cell: UITableViewCell, with task: Tasks) {
 		var contentConfiguration = cell.defaultContentConfiguration()
