@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TaskManager: ITaskManager {
+final class TaskManager {
 	private var allTasks: [Tasks] = []
 	func addTasks(tasks: [Tasks]) {
 		for task in tasks {
@@ -21,12 +21,13 @@ class TaskManager: ITaskManager {
 		return allTasks
 	}
 	func completedTask() -> [Tasks] {
-		allTasks.filter({ $0.completed != false })
+		allTasks.filter { $0.completed }
 	}
 	func notCompletedTask() -> [Tasks] {
-		allTasks.filter({ $0.completed != true })
+		allTasks.filter { !$0.completed }
 	}
 	func removeTask(task: Tasks) {
 		allTasks.removeAll { $0 === task }
 	}
 }
+extension TaskManager: ITaskManager { }
