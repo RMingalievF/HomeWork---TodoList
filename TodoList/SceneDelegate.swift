@@ -35,6 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 			RegularTask(title: "Do Workout", completed: true),
 			RegularTask(title: "Solve 3 algorithms", completed: false),
 			ImportantTask(title: "Write new tasks", date: Date(), taskPriority: .low),
+			RegularTask(title: "Fix problem ", completed: false),
 			ImportantTask(title: "Go shopping", date: Date(), taskPriority: .medium)
 		]
 		taskManager.addTasks(tasks: tasks)
