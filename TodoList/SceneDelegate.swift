@@ -30,16 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	}
 	func buildTaskManager() -> ITaskManager {
 		let taskManager = TaskManagerDecorator(taskManager: TaskManager())
-		let tasks: Task = .importantTask(
-			ImportantTask(
-				ID: .init(rawValue: "ImpTask"),
-				title: "Do homework",
-				taskStatus: .notStarted,
-				taskPriority: .high,
-				date: Date()
-			)
-		)
-
+		let tasks: Task = .importantTask(ImportantTask(	title: "Do homework", taskStatus: .notStarted, taskPriority: .high, date: Date()))
 		taskManager.addTasks(tasks: tasks)
 		return taskManager
 	}

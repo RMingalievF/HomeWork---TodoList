@@ -12,7 +12,6 @@ enum Task {
 	case importantTask(ImportantTask)
 }
 struct RegularTask {
-	let ID: ID<RegularTask>
 	let title: String
 	let completed: Bool
 }
@@ -23,13 +22,12 @@ struct ImportantTask {
 		case medium
 		case high
 	}
-	enum TaskStatus {
-		case notStarted
+	enum TaskStatus: String {
+		case notStarted = "Не начата"
 		case completed
 		case canceled
 		case paused
 	}
-	let ID: ID<ImportantTask>
 	let title: String
 	let taskStatus: TaskStatus
 	let taskPriority: TaskPriority
@@ -46,13 +44,6 @@ struct ImportantTask {
 	}
 }
 
-struct ID<Tag> {
-	let rawValue: String
-	init(rawValue: String) {
-		self.rawValue = rawValue
-	}
-}
-
 extension Task {
 	var regularTask: RegularTask? {
 		guard case let .regularTask(regularTask) = self else {return nil}
@@ -63,4 +54,3 @@ extension Task {
 		return importantTask
 	}
 }
-

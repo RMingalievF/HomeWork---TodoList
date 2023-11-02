@@ -10,12 +10,7 @@ import Foundation
 final class TaskManager {
 	private var allTasks: [Task] = []
 	func addTasks(tasks: Task ) {
-		switch tasks {
-		case .regularTask(_):
 			allTasks.append(tasks)
-		case .importantTask(_):
-			allTasks.append(tasks)
-		}
 	}
 	func addTask(task: Task) {
 		allTasks.append(task)
