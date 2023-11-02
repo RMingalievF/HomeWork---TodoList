@@ -30,15 +30,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	}
 	func buildTaskManager() -> ITaskManager {
 		let taskManager = TaskManagerDecorator(taskManager: TaskManager())
-		let tasks = [
-			ImportantTask(title: "Do homework", date: Date(), taskPriority: .high),
-			RegularTask(title: "Do Workout", completed: true),
-			RegularTask(title: "Solve 3 algorithms", completed: false),
-			ImportantTask(title: "Write new tasks", date: Date(), taskPriority: .low),
-			RegularTask(title: "Fix problem ", completed: false),
-			ImportantTask(title: "Go shopping", date: Date(), taskPriority: .medium)
-		]
+		let tasks: Task = .importantTask(
+			ImportantTask(
+				ID: .init(rawValue: "ImpTask"),
+				title: "Do homework",
+				taskStatus: .notStarted,
+				taskPriority: .high,
+				date: Date()
+			)
+		)
+
 		taskManager.addTasks(tasks: tasks)
 		return taskManager
 	}
 }
+
+
+//		ImportantTask(title: "Do homework", taskStatus: .notStarted, taskPriority: .high, date: Date()),
+//		RegularTask(title: "Do Workout", completed: true),
+//		RegularTask(title: "Solve 3 algorithms", completed: false),
+//		ImportantTask(title: "Write new tasks", taskStatus: .paused, taskPriority: .low, date: Date()),
+//		RegularTask(title: "Fix problem ", completed: false),
+//		ImportantTask(title: "Go shopping", taskStatus: .completed, taskPriority: .medium, date: Date())
+		

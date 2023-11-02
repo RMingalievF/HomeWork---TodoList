@@ -8,26 +8,22 @@
 import Foundation
 
 final class TaskManager {
-	private var allTasks: [Tasks] = []
-	func addTasks(tasks: [Tasks]) {
-		for task in tasks {
-			allTasks.append(task)
+	private var allTasks: [Task] = []
+	func addTasks(tasks: Task ) {
+		switch tasks {
+		case .regularTask(_):
+			allTasks.append(tasks)
+		case .importantTask(_):
+			allTasks.append(tasks)
 		}
 	}
-	func addTask(task: Tasks) {
+	func addTask(task: Task) {
 		allTasks.append(task)
 	}
-	func getAllTasks() -> [Tasks] {
+	func getAllTasks() -> [Task] {
 		return allTasks
 	}
-	func completedTask() -> [Tasks] {
-		allTasks.filter { $0.completed }
-	}
-	func notCompletedTask() -> [Tasks] {
-		allTasks.filter { !$0.completed }
-	}
-	func removeTask(task: Tasks) {
-		allTasks.removeAll { $0 === task }
+	func removeTask(task: Task) {
 	}
 }
 extension TaskManager: ITaskManager { }

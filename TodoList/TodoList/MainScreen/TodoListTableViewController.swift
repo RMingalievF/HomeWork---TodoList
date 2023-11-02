@@ -27,15 +27,15 @@ private extension TodoListTableViewController {
 	private func setup() {
 		self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 	}
-	func getTaskForIndex(_ indexPath: IndexPath) -> Tasks {
+	func getTaskForIndex(_ indexPath: IndexPath) -> Task {
 		taskManager.getAllTasks()[indexPath.row]
 	}
-	func configureCell(_ cell: UITableViewCell, with task: Tasks) {
+	func configureCell(_ cell: UITableViewCell, with task: Task) {
 		var contentConfiguration = cell.defaultContentConfiguration()
-		if let task = task as? ImportantTask {
+		if let task = task.importantTask {
 			contentConfiguration.secondaryText = "Deadline: \(task.deadLine.formatted())"
 		}
-		contentConfiguration.text = task.title
+		contentConfiguration.text = task.importantTask?.title
 		cell.contentConfiguration = contentConfiguration
 	}
 }

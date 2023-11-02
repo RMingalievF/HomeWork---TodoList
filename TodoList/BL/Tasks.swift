@@ -7,27 +7,33 @@
 
 import Foundation
 
-class Tasks {
-	var title: String
-	var completed: Bool
-
-	init(title: String, completed: Bool) {
-		self.title = title
-		self.completed = completed
-	}
+enum Task {
+	case regularTask(RegularTask)
+	case importantTask(ImportantTask)
+}
+struct RegularTask {
+	let ID: ID<RegularTask>
+	let title: String
+	let completed: Bool
 }
 
-final class RegularTask: Tasks {
-}
-
-final class ImportantTask: Tasks {
+struct ImportantTask {
 	enum TaskPriority: Int {
 		case low
 		case medium
 		case high
 	}
+	enum TaskStatus {
+		case notStarted
+		case completed
+		case canceled
+		case paused
+	}
+	let ID: ID<ImportantTask>
+	let title: String
+	let taskStatus: TaskStatus
 	let taskPriority: TaskPriority
-	var date: Date
+	let date: Date
 	var deadLine: Date {
 		switch taskPriority {
 		case .high:
@@ -38,9 +44,23 @@ final class ImportantTask: Tasks {
 			return Calendar.current.date(byAdding: .day, value: 3, to: date)! // swiftlint:disable:this force_unwrapping
 		}
 	}
-	init(title: String, date: Date, taskPriority: TaskPriority) {
-		self.taskPriority = taskPriority
-		self.date = date
-		super.init(title: title, completed: false)
+}
+
+struct ID<Tag> {
+	let rawValue: String
+	init(rawValue: String) {
+		self.rawValue = rawValue
 	}
 }
+
+extension Task {
+	var regularTask: RegularTask? {
+		guard case let .regularTask(regularTask) = self else {return nil}
+		return regularTask
+	}
+	var importantTask: ImportantTask? {
+		guard case let .importantTask(importantTask) = self else {return nil}
+		return importantTask
+	}
+}
+
